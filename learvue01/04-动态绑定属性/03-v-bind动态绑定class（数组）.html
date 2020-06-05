@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<style>
+  .aaaa {
+    color: red;
+  }
+
+  .bbbb {
+    font-size: 20px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <!-- 加上单引号当成字符串 -->
+    <h2 class="title" :class="['active','line']">{{message}}</h2>
+    <!-- 不加单引号当成变量 -->
+    <h2 class="title" :class="[active,line]">{{message}}</h2>
+    <h2 class="title" :class="getclass()">{{message}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        active: "aaaa",
+        line: 'bbbb',
+        message: "你好呀"
+      },
+      methods: {
+        getclass() {
+          return [this.active, this.line];
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
