@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-cpnc></my-cpnc>
+    <my-cpnc></my-cpnc>
+    <my-cpnc></my-cpnc>
+  </div>
+
+  <script>
+    const cpnc = Vue.extend({
+      template:`
+        <div>
+          <h2>标题</h2>
+          <p>内容1...<p>
+          <p>内容2...<p>
+        </div>`
+    })
+    Vue.component('my-cpnc', cpnc)
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      components: {
+        cpnc
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

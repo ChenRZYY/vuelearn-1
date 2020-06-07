@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+
+  <script>
+    Vue.component('cpn1', {
+      template: `
+        <div>
+          <h2>全局组件语法糖</h2>
+          <p>全局组件语法糖</p>
+        </div>`
+    })
+    var vm = new Vue({
+      el: '#app',
+      components: {
+        cpn2: {
+          template: `
+        <div>
+          <h2>局部组件语法糖</h2>
+          <p>局部组件语法糖</p>
+        </div>`
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
