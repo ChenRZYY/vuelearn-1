@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>父组件num1-{{num1}}</h2>
+    <h2>父组件num2-{{num2}}</h2>
+    <cpn :num1="num1" :num2="num2" @num1change="num1change" @num2change="num2change"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>子组件dnum1-{{dnum1}}</h2>
+      <input type="text" v-model="dnum1">
+      <h2>子组件dnum2-{{dnum2}}</h2>
+      <input type="text" v-model="dnum2">
+      <br>
+
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+          dnum1: this.num1,
+          dnum2: this.num2,
+        }
+      },
+      props: {
+        num1: Number,
+        num2: Number,
+      },
+      watch: {
+        dnum1(value) {
+          this.$emit("num1change", value);
+        },
+        dnum2(value) {
+          this.$emit("num2change", value);
+        }
+      }
+
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 2,
+      },
+      methods: {
+        num1change(value) {
+          this.num1 = value;
+        },
+        num2change(value) {
+          this.num2 = value;
+        }
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+</body>
+
+</html>
